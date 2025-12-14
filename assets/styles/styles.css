@@ -1,0 +1,249 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+:root {
+    --fisio-primary: #10b981;    /* Verde Esmeralda Vibrante */
+    --fisio-dark: #064e3b;       /* Verde Oscuro Serio */
+    --fisio-light: #ecfdf5;      /* Verde Muy Claro Fondo */
+    --fisio-hover: #059669;      /* Verde para hovers */
+    --text-main: #374151;        /* Gris Oscuro Texto */
+    --text-muted: #6b7280;       /* Gris Medio Texto Secundario */
+    --bg-body-gradient: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    --bg-dashboard: #f3f4f6;
+}
+
+body {
+    /* Fondo: Priorizamos el degradado sutil */
+    background: var(--bg-body-gradient); 
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. NAVEGACIÓN Y FOOTER (GENERAL)
+   ========================================= */
+/* Navbar General (Landing/Home) */
+.navbar.navbar-expand-lg {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f3f4f6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Navbar Específica del Dashboard */
+.navbar-dashboard {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+}
+
+.brand-text {
+    color: var(--fisio-dark);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Footer */
+.footer-log {
+    width: 150px; 
+    height: 100px; 
+    object-fit: contain;
+    background-color: transparent;
+    filter: grayscale(100%) opacity(0.8);
+}
+
+footer.container.bg-info {
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f3f4f6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    padding: 0px !important;
+    margin-bottom: 8px !important;
+}
+
+footer.container.bg-info > div.container.rounded-3 {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+ul.nav > li.nav-item.a > a {
+    color: #000000 !important;
+}
+
+/* =========================================
+   3. TIPOGRAFÍA Y TÍTULOS
+   ========================================= */
+.display-6.fw-semibold {
+    color: var(--fisio-dark); /* Verde bosque muy oscuro */
+}
+
+p.col-md-8.fs-5 {
+    color: #4b5563;
+}
+
+/* =========================================
+   4. BOTONES Y INPUTS
+   ========================================= */
+/* Botones Principales */
+.btn.btn-primary, .bg-primary {
+    background-color: var(--fisio-primary) !important;
+    border: none;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 50px; /* Estilo píldora */
+    padding: 10px 25px;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.btn-primary:hover, .bg-primary:hover {
+    background-color: var(--fisio-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Ajuste específico para enlaces con estilo botón */
+div.container-fluid > a.btn-primary {
+    color: white !important;
+}
+
+/* Botones de acción pequeños (Dashboard) */
+.btn-action {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Inputs de búsqueda y formularios */
+.form-control {
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    color: #333;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: var(--fisio-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.btn.btn-outline-success.bg-secondary.text-white {
+    background-color: var(--text-main) !important;
+    border-radius: 8px;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--fisio-primary) !important;
+}
+
+/* =========================================
+   5. TARJETAS (CARDS) GENERALES
+   ========================================= */
+.card {
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.15);
+    border-color: #a7f3d0;
+}
+
+.card-body {
+    background-color: #ffffff;
+    color: var(--text-main);
+    padding: 1.5rem;
+}
+
+.card .card-title {
+    color: var(--fisio-hover); /* Verde esmeralda */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Botones secundarios dentro de las cards */
+.card .btn-primary {
+    background-color: var(--fisio-light) !important;
+    color: var(--fisio-hover) !important;
+    width: 100%;
+    font-weight: 700;
+    border-radius: 50px; /* Mantenemos consistencia */
+    box-shadow: none;
+}
+
+.card .btn-primary:hover {
+    background-color: var(--fisio-primary) !important;
+    color: white !important;
+}
+
+/* =========================================
+   6. ELEMENTOS DEL DASHBOARD (ESPECÍFICO)
+   ========================================= */
+.container.border-bottom.py-3 {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+/* Tarjetas de Estadísticas */
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    background: white;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Tabla de Pacientes */
+.table-card {
+    background: white;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f9fafb;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--fisio-light);
+    color: var(--fisio-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
