@@ -1,0 +1,36 @@
+services:
+  # 1. Tu servidor Web (PHP + Apache)
+  clinica-web:
+    build: .
+    container_name: clinica-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  # 2. La Base de Datos (MySQL)
+  db:
+    image: mysql:5.7
+    container_name: clinica-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Contraseña del root
+      MYSQL_DATABASE: clinica    # Crea esta base de datos automáticamente
+    volumes:
+      - db_data:/var/lib/mysql   # Para no perder datos si apagas docker
+
+  # 3. phpMyAdmin (Gestor visual)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: clinica-pma
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"                # Accederemos por el puerto 8081
+    depends_on:
+      - db
+
+volumes:
+  db_data:
