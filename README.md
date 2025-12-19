@@ -2,7 +2,8 @@
 
 Sitio web estático de temática **fisioterapia y salud**, construido con **Bootstrap 5** y convertido en una **Single Page Application (SPA)** mediante jQuery.
 
-Incluye **4 secciones** gestionadas dinámicamente dentro de un único `index.html`: Inicio, Tratamientos, Contacto y Acceso Profesionales.
+Incluye **5 secciones** gestionadas dinámicamente dentro de un único `index.html`: Inicio, Tratamientos, Contacto y 2 Accesos, para profesionales y para pacientes.
+Además, exixte un dashboard.php como "panel de control".
 
 ---
 
