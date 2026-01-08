@@ -22,7 +22,7 @@ $conn = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 if ($conn->connect_error) {
     // Esto te ayudará a ver el error exacto si falla
     die("Error de conexión (" . $conn->connect_errno . "): " . $conn->connect_error);
-}git add .
+}
 
 // Esto está perfecto para evitar problemas con las tildes/eñes
 $conn->set_charset("utf8");
