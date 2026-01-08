@@ -1,7 +1,6 @@
 <?php
 // IMPORTANTE: Que no haya NINGÚN espacio ni línea en blanco antes de <?php
 session_start();
-// 1. Aquí llamamos a tu archivo con el nombre correcto
 require 'conection.php'; 
 
 // Verificamos si se ha enviado el formulario
@@ -11,33 +10,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
 
-    // 2. Consulta adaptada a tu base de datos (fisioplusdb -> fisioterapeutas)
-    $sql = "SELECT nombre, contraseña FROM fisioterapeutas WHERE correo = '$email'";
+    // 2. Consulta adaptada
+    // IMPORTANTE: Aquí pedimos 'password' (en inglés), no 'contraseña'
+    $sql = "SELECT nombre, password FROM fisioterapeutas WHERE email = '$email'";
     $resultado = $conn->query($sql);
 
     if ($resultado && $resultado->num_rows > 0) {
         $usuario = $resultado->fetch_assoc();
         
-        // 3. Verificamos la contraseña (texto plano '123')
-        if ($password === $usuario['contraseña']) {
+        // --- CORRECCIÓN CRÍTICA AQUÍ ---
+        // Antes tenías $usuario['contraseña']. Eso da error porque en el SELECT pedimos 'password'.
+        if ($password === $usuario['password']) {
             
             // --- LOGIN CORRECTO ---
             $_SESSION['terapeuta_nombre'] = $usuario['nombre'];
-            // 4. LA REDIRECCIÓN AL DASHBOARD
-            // Esto le dice al navegador: "Vete ya a dashboard.php"
             header("Location: dashboard.php");
-            exit; // Detiene el script aquí mismo para que no cargue nada más
+            exit; 
 
         } else {
-            // Contraseña incorrecta -> Vuelta al index con alerta
-            echo "<script>alert('Contraseña incorrecta'); window.location.href='index.php';</script>";
+            // Contraseña incorrecta
+            echo "<script>alert('Contraseña incorrecta. Has escrito: $password y en la BD está: " . $usuario['password'] . "'); window.location.href='index.php';</script>";
         }
     } else {
-        // Usuario no existe -> Vuelta al index con alerta
-        echo "<script>alert('Usuario no encontrado'); window.location.href='index.php';</script>";
+        // --- ERROR DE USUARIO NO ENCONTRADO ---
+        // He añadido que te muestre qué email está buscando para que veas si llega bien
+        echo "<script>alert('Usuario no encontrado. Buscaste el email: $email'); window.location.href='index.php';</script>";
     }
 } else {
-    // Si entran directo sin formulario -> Vuelta al index
     header("Location: index.php");
     exit;
 }

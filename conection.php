@@ -14,8 +14,7 @@ $contrasenia = "root";
 // Tu docker-compose crea por defecto una base llamada "clinica".
 // Si quieres usar "fisioplusdb", tienes que entrar a phpMyAdmin y crearla primero,
 // o cambiar este nombre a "clinica".
-$base_de_datos = "clinicadocker-compose down
-docker-compose up -d --build"; 
+$base_de_datos = "clinica"; 
 
 $conn = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 
