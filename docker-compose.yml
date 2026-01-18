@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  # 1. WEB (Puerto externo 8080 para no chocar con AWS)
+  clinica-web:
+    build: .
+    container_name: clinica-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    restart: always
+
+  # 2. BASE DE DATOS
+  db:
+    image: mysql:5.7
+    container_name: clinica-db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: clinica
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+  # 3. PHPMYADMIN (Puerto 8081)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: clinica-pma
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
