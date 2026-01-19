@@ -1,9 +1,9 @@
 <?php
 // conexion.php
-$host = "localhost";
+$host = "db";
 $usuario = "root";
-$contrasenia = "";
-$base_de_datos = "fisioplusdb"; // <--- CAMBIADO SEGÚN TU FOTO
+$contrasenia = "root";
+$base_de_datos = "clinica"; // <--- CAMBIADO SEGÚN TU FOTO
 
 $conn = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 

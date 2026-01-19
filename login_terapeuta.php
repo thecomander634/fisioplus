@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
 
-    // 2. Consulta adaptada a tu base de datos (fisioplusdb -> fisioterapeutas)
     $sql = "SELECT nombre, contraseña FROM fisioterapeutas WHERE correo = '$email'";
     $resultado = $conn->query($sql);
 
